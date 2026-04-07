@@ -8,7 +8,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="icon" href="Ldlc.png" type="image/x-icon">
 
     <style>
@@ -165,28 +165,35 @@
             object-position: center;
         }
 
-        h1 {
+        /* TITRES MIS À JOUR */
+        h1, h2 {
             font-family: 'Playfair Display', serif;
-            font-weight: 400;
-            letter-spacing: 0.02em;
-            font-size: 3rem;
-            margin-bottom: 6px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin-bottom: 20px;
         }
 
+        h1 { font-size: 3.5rem; line-height: 1.1; }
+        h2 { font-size: 2.5rem; }
+
         .hero-sub {
-            font-size: 1.1rem;
-            font-weight: 800;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            font-style: italic;
+            letter-spacing: 0.05em;
             color: #FFFFFF;
             margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            display: inline-block;
+            padding-bottom: 5px;
         }
 
         p {
             margin-bottom: 16px;
             font-size: 1.05rem;
             max-width: var(--content-width);
-            font-weight: 800;
+            font-weight: 400;
         }
 
         .text-section {
@@ -196,32 +203,22 @@
             margin-right: auto;
         }
 
-        .text-section h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            margin-bottom: 16px;
-        }
-
         .text-section a {
             color: rgba(0, 8, 101, 0.8);
-            text-decoration: none;
-        }
-
-        .text-section a:hover {
-            color: rgba(0, 8, 101, 0.7);
+            text-decoration: underline;
+            font-weight: 600;
         }
 
         /* GALLERIES */
         .gallery-section {
             margin: 35px auto;
-            max-width: var(--content-width); /* même largeur que le texte */
+            max-width: var(--content-width);
             padding: 0;
             margin-bottom: 64px;
         }
 
         .click-gallery {
             width: 100%;
-            max-width: 100%;
             height: auto;
             aspect-ratio: 3 / 2;
             border-radius: 16px;
@@ -239,10 +236,6 @@
         .gallery-item {
             position: absolute;
             inset: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
             opacity: 0;
             transform: translateX(100%);
             transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -252,9 +245,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center;
             border-radius: inherit;
-            display: block;
         }
 
         .gallery-item.active {
@@ -262,14 +253,13 @@
             transform: translateX(0);
         }
 
-        /* ARROWS */
         .gallery-arrow {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
             width: 38px;
             height: 38px;
-            border-radius: 999px;
+            border-radius: 50%;
             border: none;
             background: rgba(0,0,0,0.4);
             color: #fff;
@@ -278,160 +268,29 @@
             justify-content: center;
             cursor: pointer;
             z-index: 2;
-            transition: background 0.2s ease, transform 0.2s ease;
         }
 
-        .gallery-arrow:hover {
-            background: rgba(0,0,0,0.6);
-            transform: translateY(-50%) scale(1.03);
-        }
-
-        .gallery-arrow.prev {
-            left: 10px;
-        }
-
-        .gallery-arrow.next {
-            right: 10px;
-        }
-
-        .gallery-arrow span {
-            font-size: 18px;
-            line-height: 1;
-            pointer-events: none;
-        }
+        .gallery-arrow.prev { left: 10px; }
+        .gallery-arrow.next { right: 10px; }
 
         /* FOOTER */
-.footer {
-    position: static;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: #f6fff8; /* almost solid, reduces transparency effect */
-    color: rgba(0,21,64,1);
-    padding: 3px 5px;
-    z-index: 1000;
-}
-
-        .footer-content {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .footer-content p {
-            margin-bottom: 3px;
-            font-size: 0.95rem;
+        .footer {
+            background: #f6fff8;
             color: rgba(0,21,64,1);
+            padding: 20px 0;
+            margin-top: auto;
         }
 
-        .footer-content a {
-            color: rgba(0,21,64,1);
-            text-decoration: none;
-        }
+        .footer-content { text-align: center; }
 
-        .footer-content a:hover {
-            color: rgba(0,21,64,.8);
-        }
-
-        /* MOBILE */
         @media (max-width: 768px) {
-            body {
-                font-size: 15px;
-                line-height: 1.8;
-            }
-
-            .header-inner {
-                padding: 12px 16px;
-            }
-
-            .logo {
-                font-size: 1.6rem;
-            }
-
-            .nav-container {
-                padding-left: 18px; /* pour mieux voir "Accueil" */
-            }
-
-            .nav-links {
-                justify-content: flex-start;
-            }
-
-            .nav-links li {
-                flex: 0 0 auto;
-                max-width: none;
-            }
-
-            .nav-links a {
-                padding: 8px 8px;
-                font-size: 0.65rem;
-                letter-spacing: 0.13em;
-            }
-
-            .page-content {
-                padding: 10px 16px 10px;
-            }
-
-            h1 {
-                font-size: 2rem;
-                line-height: 1.2;
-            }
-
-            p {
-                font-size: 1rem;
-                max-width: 100%;
-            }
-
-            .hero-image {
-                margin: 16px 0 24px;
-                border-radius: 14px;
-                max-height: 320px;
-            }
-
-            .hero-img-el {
-                max-height: 320px;
-            }
-
-            .text-section {
-                margin: 48px 0;
-                padding: 0 12px 15px;
-                max-width: var(--content-width);
-            }
-
-            .gallery-section {
-                margin: 32px auto;
-                max-width: var(--content-width);
-                padding: 0 12px; /* même colonne que le texte */
-            }
-
-            .click-gallery {
-                width: 100%;
-                border-radius: 14px;
-            }
-
-            .gallery-item {
-                border-radius: 14px;
-            }
-
-.footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: #f6fff8; /* almost solid, reduces transparency effect */
-    color: rgba(0,21,64,1);
-    padding: 3px 5px;
-    z-index: 1000;
-}
-
-            .footer-content p {
-                font-size: 0.9rem;
-                margin-bottom: 2px;
-            }
+            h1 { font-size: 2.2rem; }
+            .hero-sub { font-size: 1.1rem; }
+            .footer { position: relative; }
         }
     </style>
 </head>
 <body>
-    <!-- HEADER -->
     <header>
         <div class="header-inner">
             <a href="#accueil" class="logo">Carl de la Chapelle</a>
@@ -441,7 +300,7 @@
                 <li><a href="#accueil" class="nav-link active">Accueil</a></li>
                 <li><a href="#apropos" class="nav-link">À propos</a></li>
                 <li><a href="#tarifs" class="nav-link">Tarifs</a></li>
-                <li><a href="#mariage" class="nav-link">mariage</a></li>
+                <li><a href="#mariage" class="nav-link">Mariage</a></li>
                 <li><a href="#soiree" class="nav-link">Soirée</a></li>
                 <li><a href="#shooting" class="nav-link">Shooting</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -449,69 +308,54 @@
         </div>
     </header>
 
-    <!-- ACCUEIL -->
     <div id="accueil" class="page active">
         <main class="page-content">
             <section class="text-section">
                 <div class="hero-sub">Photos au naturel (Non retouchées)</div>
                 <p><i>"Commencez par faire ce qui est nécessaire, puis ce qui est possible, et tout à coup, vous faites l'impossible."</i> <br> <small>Saint François d'Assise</small></p>
                 <div class="hero-image">
-                    <img src="2025-11-01_22-37-36_880.jpeg" alt="ImagePremAccueil" class="hero-img-el">
+                    <img src="2025-11-01_22-37-36_880.jpeg" alt="Accueil" class="hero-img-el">
                 </div>
             </section>
         </main>
     </div>
 
-    <!-- À PROPOS -->
     <div id="apropos" class="page">
         <main class="page-content">
             <section class="text-section">
                 <div class="hero-sub">Qui suis-je ?</div>
-                <p>Je m’appelle Carl de La Chapelle, j’ai 20 ans et je suis étudiant en BTS comptabilité, gestion à Bordeaux. Passionné de nature, de scoutisme et de chasse, je suis, depuis très jeune, attiré par le Beau. Je me suis quelquefois retrouvé à prendre des photos avec le vieux boîtier de ma grand-mère, et j’y ai pris goût. Je passe le pas en septembre 2024 en achetant mon premier boîtier. Après plus d’un an d’apprentissage et d’entraînement, je me suis lancé dans les prestations et je continue de me développer.</p>
+                <p>Je m’appelle Carl de La Chapelle, j’ai 20 ans et je suis étudiant en BTS comptabilité et gestion à Bordeaux. Passionné de nature, de scoutisme et de chasse, je suis, depuis très jeune, attiré par le Beau. Je me suis quelquefois retrouvé à prendre des photos avec le vieux boîtier de ma grand-mère, et j’y ai pris goût. J’ai franchi le pas en septembre 2024 en achetant mon premier boîtier. Après plus d’un an d’apprentissage et d’entraînement, je me suis lancé dans les prestations et je continue de me développer.</p>
                 <div class="hero-sub">Ma spécificité</div>
-                <p>Lors de mes débuts, j’ai fait un choix important dans ce domaine assez répétitif : je voulais me démarquer. Mon choix fut de ne pas retoucher mes photos. Deux grands points m’ont encouragé dans cette voie. Tout d’abord, la recherche d’une photographie à l’état pur, où l’idée de figer l’instant présent prend tout son sens.  Ensuite, la rapidité. Je trouve que pouvoir disposer des clichés dans un délai très restreint, en suivant l’événement et, dans certains cas, trier les photos avec le photographe, est une option que je souhaitais mettre en avant.</p>
-                <a href="https://instgram.com/photos.delachapelle">Instagram</a>
+                <p>Lors de mes débuts, j’ai fait un choix important dans ce domaine assez répétitif : je voulais me démarquer. Mon choix fut de ne pas retoucher mes photos. Deux grands points m’ont encouragé dans cette voie. Tout d’abord, la recherche d’une photographie à l’état pur, où l’idée de figer l’instant présent prend tout son sens. Ensuite, la rapidité. Je trouve que pouvoir disposer des clichés dans un délai très restreint après l'événement est une option essentielle que je souhaite mettre en avant.</p>
+                <a href="https://instagram.com/photos.delachapelle" target="_blank">Instagram</a>
             </section>
-            <section class="text-section"></section>
-            <section class="text-section"></section>
         </main>
     </div>
 
-    <!-- TARIFS -->
     <div id="tarifs" class="page">
         <main class="page-content">
             <section class="text-section">
                 <div class="hero-sub">Tarifs 2026</div>
-                <div class="hero-sub"><a href="#mariage" class="nav-link">Mariage</a></div>
-                <p>1000€ / journée*</p>
-                <div class="hero-sub"><a href="#soiree" class="nav-link">Soirée</a></div>
-                <p>200€ / 3h*</p>
-                <div class="hero-sub"><a href="#shooting" class="nav-link">Shooting</a></div>
-                <p>60€ / 2h</p>
-                <p><i>*Transport et logement non compris.</i></p>
+                <p><strong>Mariage :</strong> 1000€ / journée*</p>
+                <p><strong>Soirée :</strong> 200€ / 3h*</p>
+                <p><strong>Shooting :</strong> 60€ / 2h</p>
+                <p><small><i>*Transport et logement non compris.</i></small></p>
             </section>
         </main>
     </div>
 
-    <!-- mariage -->
     <div id="mariage" class="page">
         <main class="page-content">
             <section class="text-section">
                 <div class="hero-sub">Vive les mariés !</div>
-                <p><i>Partout en France - 1000€ / journée</i></p>
-                <p>Le Graal, c’est le jour de votre vie. Je n’ai pas besoin de vous mettre en avant l’importance d’avoir un photographe à votre mariage. Mais mes services pourront vous être très précieux tout d’abord, car toujours à la recherche du beau en permanence, je suis extrêmement arrangeant.
-Mes photos sont très naturelles tout simplement car je ne les retouche pas. Travaillant la photographie à l’état pur sur l’instant présent, vous pourrez, en les revoyant durant toute votre vie, vous sentir à chaque fois pleinement immergé dans ces clichés.
-Cette spécificité que je travaille depuis mes débuts vous permet aussi d’avoir vos photos dans les délais les plus brefs suivant votre mariage.
-Vous pourrez compter sur moi pour donner mon maximum afin d’avoir les meilleurs souvenirs possibles pour toute votre vie.Chaque moment avec nos proches est important, savoir prendre le temps de les immortaliser l’est tout autant. Que ce soit pour un heureux évènement, un cadeau ou même une petite folie de bonheur dans votre vie. Je me ferai un plaisir de graver ces instants pour toujours.
-Ce moment a pour but d’être dans la joie, dans le partage, je vous donnerai des idées si vous n’en avez pas et ferai de mon mieux pour vous guider.
-Une chance de plus, nous pouvons même faire le tri de la galerie ensemble pour que vous ayez directement les photos, mais surtout celles qui vous plaisent.</p>
+                <p><i>Partout en France — 1000€ / journée</i></p>
+                <p>Le Graal, c’est le jour de votre vie. Je n’ai pas besoin de vous rappeler l’importance d’avoir un photographe à votre mariage. Mes photos sont très naturelles car je ne les retouche pas. Travaillant la photographie à l’état pur sur l’instant présent, vous pourrez, en les revoyant, vous sentir pleinement immergé dans ces souvenirs. Cette spécificité vous permet aussi d’avoir vos photos dans les délais les plus brefs suivant votre union.</p>
             </section>
             <section class="gallery-section">
                 <div class="hero-sub">Galerie</div>
                 <div class="click-gallery">
-                    <button class="gallery-arrow prev" type="button" aria-label="Image précédente"><span>‹</span></button>
-                    <button class="gallery-arrow next" type="button" aria-label="Image suivante"><span>›</span></button>
-
+                    <button class="gallery-arrow prev"><span>‹</span></button>
+                    <button class="gallery-arrow next"><span>›</span></button>
                     <div class="gallery-container">
                         <div class="gallery-item active"><img src="d.jpeg" alt="Mariage 1"></div>
                         <div class="gallery-item"><img src="e.jpeg" alt="Mariage 2"></div>
@@ -523,78 +367,61 @@ Une chance de plus, nous pouvons même faire le tri de la galerie ensemble pour 
         </main>
     </div>
 
-    <!-- SOIRÉES -->
     <div id="soiree" class="page">
         <main class="page-content">
             <section class="text-section">
-                <div class="hero-sub">A fond sur le dancefloor</div>
+                <div class="hero-sub">À fond sur le dancefloor</div>
                 <p><i>200€ / 3h</i></p>
-                <p>Un évènement est souvent le fruit d’une longue préparation, l’instant présent est euphorique, mais après… Eh bien oui, vous avez fait le pas de me demander d’être présent, ainsi vous et vos invités, si vous le souhaitez, repartez avec une galerie acrobatique, haute en sourires et en couleurs.
-Durant la soirée, discret et efficace, vous ne serez pas embêté par mes faufilades.
-Encore un point important : vous aurez les photos maximum trois jours après sur un album simple de manœuvres et diffusables à souhait.</p>
+                <p>Un événement est souvent le fruit d’une longue préparation. Durant la soirée, discret et efficace, je me faufile pour capturer les sourires et l'énergie. Vous recevrez vos photos au maximum trois jours après sur un album simple et diffusable à souhait.</p>
             </section>
             <section class="gallery-section">
                 <div class="hero-sub">Galerie</div>
                 <div class="click-gallery">
-                    <button class="gallery-arrow prev" type="button" aria-label="Image précédente"><span>‹</span></button>
-                    <button class="gallery-arrow next" type="button" aria-label="Image suivante"><span>›</span></button>
-
+                    <button class="gallery-arrow prev"><span>‹</span></button>
+                    <button class="gallery-arrow next"><span>›</span></button>
                     <div class="gallery-container">
                         <div class="gallery-item active"><img src="a.jpeg" alt="Soirée 1"></div>
                         <div class="gallery-item"><img src="c.jpeg" alt="Soirée 2"></div>
-                        <div class="gallery-item"><img src="g.jpeg" alt="Soirée 3"></div>
-                        <div class="gallery-item"><img src="h.jpeg" alt="Soirée 4"></div>
-                        <div class="gallery-item"><img src="i.jpeg" alt="Soirée 4"></div>
-                        <div class="gallery-item"><img src="2025-12-06_21-48-21_650.jpeg" alt="Soirée 5"></div>
+                        <div class="gallery-item"><img src="2025-12-06_21-48-21_650.jpeg" alt="Soirée 3"></div>
                     </div>
                 </div>
             </section>
         </main>
     </div>
 
-    <!-- SHOOTING -->
     <div id="shooting" class="page">
         <main class="page-content">
             <section class="text-section">
-                <div class="hero-sub">Un moment susprendu</div>
+                <div class="hero-sub">Un moment suspendu</div>
                 <p><i>60€ / 2h</i></p>
-                <p>Chaque moment avec nos proches est important, savoir prendre le temps de les immortaliser l’est tout autant. Que ce soit pour un heureux évènement, un cadeau ou même une petite folie de bonheur dans votre vie. Je me ferai un plaisir de graver ces instants pour toujours.
-Ce moment a pour but d’être dans la joie, dans le partage, je vous donnerai des idées si vous n’en avez pas et ferai de mon mieux pour vous guider.
-Une chance de plus, nous pouvons même faire le tri de la galerie ensemble pour que vous ayez directement les photos, mais surtout celles qui vous plaisent.</p>
+                <p>Chaque moment avec nos proches est important. Que ce soit pour un heureux événement, un cadeau ou une petite folie, je me ferai un plaisir de graver ces instants. Je vous guiderai pour que ce moment soit placé sous le signe de la joie et du partage.</p>
             </section>
             <section class="gallery-section">
                 <div class="hero-sub">Galerie</div>
                 <div class="click-gallery">
-                    <button class="gallery-arrow prev" type="button" aria-label="Image précédente"><span>‹</span></button>
-                    <button class="gallery-arrow next" type="button" aria-label="Image suivante"><span>›</span></button>
-
+                    <button class="gallery-arrow prev"><span>‹</span></button>
+                    <button class="gallery-arrow next"><span>›</span></button>
                     <div class="gallery-container">
-                        <div class="gallery-item active"><img src="k.jpeg" alt="Couple 1"></div>
-                        <div class="gallery-item"><img src="2025-11-08_16-44-45_370 (2025-11-09T14_43_14.466).jpeg" alt="Couple 2"></div>
-                        <div class="gallery-item"><img src="2025-11-26_17-16-07_070.jpeg" alt="Couple 3"></div>
-                        <div class="gallery-item"><img src="2025-11-26_17-33-56_760.jpeg" alt="Couple 4"></div>
+                        <div class="gallery-item active"><img src="k.jpeg" alt="Shooting 1"></div>
+                        <div class="gallery-item"><img src="2025-11-26_17-16-07_070.jpeg" alt="Shooting 2"></div>
                     </div>
                 </div>
             </section>
         </main>
     </div>
 
-    <!-- CONTACT -->
     <div id="contact" class="page">
         <main class="page-content">
             <section class="text-section">
                 <div class="hero-sub">Parlons de vos projets !</div>
-                <p>Envoyez-moi un mail à <a href="mailto:delachapellecarl@gmail.com?subject=Première prise de contact">delachapellecarl@gmail.com</a>. Posez toutes vos questions, fournissez autant de détails que vous voulez (le plus sera le mieux) et je ferai mon possible pour vous répondre sous 48h.</p>
+                <p>Envoyez-moi un mail à <a href="mailto:delachapellecarl@gmail.com?subject=Première prise de contact">delachapellecarl@gmail.com</a>. Je ferai mon possible pour vous répondre sous 48h.</p>
             </section>
         </main>
     </div>
 
-    <!-- FOOTER -->
     <footer class="footer">
-        <div class="page-content">
-            <div class="footer-content">
-                <p>Saison 2026 &copy; Carl de La Chapelle</p>
-            </div>
+        <div class="footer-content">
+            <p>Saison 2026 &copy; Carl de La Chapelle</p>
         </div>
     </footer>
 
@@ -618,18 +445,12 @@ Une chance de plus, nous pouvons même faire le tri de la galerie ensemble pour 
             });
         });
 
-        // GALLERIES WITH ARROWS
+        // GALLERIES
         document.querySelectorAll('.click-gallery').forEach(gallery => {
-            const container = gallery.querySelector('.gallery-container');
-            const items = Array.from(container.querySelectorAll('.gallery-item'));
+            const items = Array.from(gallery.querySelectorAll('.gallery-item'));
             const prevBtn = gallery.querySelector('.gallery-arrow.prev');
             const nextBtn = gallery.querySelector('.gallery-arrow.next');
-            let currentIndex = items.findIndex(item => item.classList.contains('active'));
-
-            if (currentIndex === -1) currentIndex = 0;
-            items.forEach((item, index) => {
-                item.classList.toggle('active', index === currentIndex);
-            });
+            let currentIndex = 0;
 
             const showIndex = (newIndex) => {
                 items[currentIndex].classList.remove('active');
@@ -637,19 +458,8 @@ Une chance de plus, nous pouvons même faire le tri de la galerie ensemble pour 
                 items[currentIndex].classList.add('active');
             };
 
-            if (nextBtn) {
-                nextBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    showIndex(currentIndex + 1);
-                });
-            }
-
-            if (prevBtn) {
-                prevBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    showIndex(currentIndex - 1);
-                });
-            }
+            nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showIndex(currentIndex + 1); });
+            prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showIndex(currentIndex - 1); });
         });
     </script>
 </body>
