@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Mariage photographe portfolio de Carl de La Chapelle.">
-    <title>Carl de La Chapelle</title>
+    <meta name="description" content="Portfolio de Carl de La Chapelle, photographe de mariage, soirées et shootings.">
+    <title>Carl de La Chapelle | Photographe</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
     <link rel="icon" href="Ldlc.png" type="image/x-icon">
 
     <style>
         :root {
-            --bg: #ca8647;
-            --text: #1f1f1f;
-            --muted: #777777;
-            --max-width: 980px;
-            --content-width: 700px;
+            --bg-color: #ca8647;
+            --text-light: #fdfdfd;
+            --text-dark: #1a1a1a;
+            --muted-dark: #666666;
+            --max-width: 1000px;
+            --content-width: 680px;
         }
 
         * {
@@ -28,63 +29,66 @@
 
         html, body {
             height: 100%;
-            overflow-y: auto;
-            scrollbar-width: none;
+            scroll-behavior: smooth;
+            scrollbar-width: none; /* Firefox */
         }
 
-        html::-webkit-scrollbar, body::-webkit-scrollbar {
-            display: none;
+        html::-webkit-scrollbar {
+            display: none; /* Chrome, Safari */
         }
 
         body {
             font-family: 'Work Sans', system-ui, sans-serif;
-            background: var(--bg);
-            color: var(--text);
+            background: var(--bg-color);
+            color: var(--text-light); /* Blanc cassé pour un fond marron élégant */
             font-size: 16px;
-            line-height: 1.7;
+            line-height: 1.8;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* HEADER */
+        /* HEADER & NAVIGATION */
         header {
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(255, 255, 255, 1);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            background: rgba(253, 253, 253, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding-bottom: 10px;
         }
 
         .header-inner {
             max-width: var(--max-width);
             margin: 0 auto;
-            padding: 16px 24px;
+            padding: 24px 24px 12px;
             text-align: center;
         }
 
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            letter-spacing: 0.08em;
+            font-size: 2.2rem;
+            letter-spacing: 0.05em;
             text-transform: uppercase;
-            color: var(--text);
+            color: var(--text-dark);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .nav-container {
             max-width: var(--max-width);
             margin: 0 auto;
-            padding: 0 24px 8px;
-            background: white;
+            padding: 0 24px;
         }
 
         .nav-links {
             list-style: none;
             display: flex;
             justify-content: center;
-            gap: 5px;
+            gap: 20px;
             overflow-x: auto;
             scrollbar-width: none;
         }
@@ -93,129 +97,213 @@
 
         .nav-links a {
             text-decoration: none;
-            color: var(--muted);
-            font-size: 0.72rem;
-            font-weight: 800;
-            letter-spacing: 0.18em;
+            color: var(--muted-dark);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
-            padding: 10px 12px;
+            padding: 8px 4px;
             display: block;
-            border-radius: 6px;
-            transition: 0.3s;
+            transition: color 0.3s ease;
+            white-space: nowrap;
         }
 
+        .nav-links a:hover,
         .nav-links a.active {
-            color: var(--text);
-            background: rgba(209, 155, 108, 0.15);
+            color: var(--text-dark);
         }
 
-        /* CONTENT */
-        .page { display: none; flex: 1; }
-        .page.active { display: block; }
+        /* PAGES & CONTENT */
+        .page { 
+            display: none; 
+            flex: 1; 
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .page.active { 
+            display: block; 
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
         .page-content {
             max-width: var(--max-width);
             margin: 0 auto;
-            padding: 40px 24px;
+            padding: 60px 24px;
         }
 
-        h1, h2 {
+        /* TYPOGRAPHY */
+        h1, h2, .hero-sub {
             font-family: 'Playfair Display', serif;
-            margin-bottom: 20px;
         }
 
         .hero-sub {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
+            font-size: 1.8rem;
             font-style: italic;
-            color: white;
-            margin-bottom: 20px;
-            border-bottom: 1px solid rgba(255,255,255,0.3);
-            display: inline-block;
+            font-weight: 400;
+            color: var(--text-light);
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        p { 
+            margin-bottom: 1.5rem; 
+            font-weight: 300; 
+            font-size: 1.05rem;
         }
 
         .text-section {
             max-width: var(--content-width);
-            margin: 40px auto;
+            margin: 0 auto 60px;
         }
 
-        p { margin-bottom: 1.5rem; font-weight: 400; }
+        .text-section a {
+            color: var(--text-light);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            transition: opacity 0.3s ease;
+        }
 
-        .hero-image { border-radius: 16px; overflow: hidden; margin: 20px 0; }
-        .hero-img-el { width: 100%; display: block; max-height: 500px; object-fit: cover; }
+        .text-section a:hover {
+            opacity: 0.7;
+        }
 
-        /* GALLERIES */
-        .gallery-section { max-width: var(--content-width); margin: 40px auto; }
+        /* IMAGES & GALLERIES */
+        .hero-image { 
+            border-radius: 8px; 
+            overflow: hidden; 
+            margin: 30px 0; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .hero-img-el { 
+            width: 100%; 
+            display: block; 
+            max-height: 550px; 
+            object-fit: cover; 
+        }
+
+        .gallery-section { 
+            max-width: var(--content-width); 
+            margin: 0 auto 60px; 
+        }
+
         .click-gallery { 
             position: relative; 
             aspect-ratio: 3/2; 
-            border-radius: 16px; 
+            border-radius: 8px; 
             overflow: hidden; 
-            background: #222;
+            background: rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
-        .gallery-container { position: relative; height: 100%; }
+
+        .gallery-container { 
+            position: relative; 
+            height: 100%; 
+        }
+
         .gallery-item { 
             position: absolute; 
             inset: 0; 
             opacity: 0; 
-            transition: 0.6s ease-in-out; 
+            transition: opacity 0.6s ease-in-out; 
+            z-index: 1;
         }
-        .gallery-item.active { opacity: 1; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+
+        .gallery-item.active { 
+            opacity: 1; 
+            z-index: 2;
+        }
+
+        .gallery-item img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+        }
 
         .gallery-arrow {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(0,0,0,0.5);
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(4px);
             color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             cursor: pointer;
             z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
         }
-        .prev { left: 10px; }
-        .next { right: 10px; }
 
-        /* FOOTER UPDATED */
+        .gallery-arrow:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .prev { left: 16px; }
+        .next { right: 16px; }
+
+        /* FOOTER AESTHETIC */
         .footer {
-            background: #f6fff8;
-            padding: 15px 0;
-            margin-top: auto; /* Pousse le footer en bas si le contenu est court */
-            border-top: 1px solid rgba(0,0,0,0.05);
+            margin-top: auto;
+            padding: 40px 0;
+            background: transparent;
         }
 
         .footer-inner {
-            max-width: var(--max-width);
+            max-width: var(--content-width); /* Aligné avec le texte pour l'harmonie */
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 20px 24px 0;
             display: flex;
-            justify-content: space-between; /* Aligne un à gauche, un à droite */
+            justify-content: space-between;
             align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.25);
         }
 
         .footer-left {
-            font-size: 0.9rem;
-            color: rgba(0,21,64,0.8);
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 500;
         }
 
         .footer-right a {
-            font-size: 0.9rem;
-            color: rgba(0,21,64,1);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--text-light);
             text-decoration: none;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+            font-style: italic;
+            transition: opacity 0.3s;
         }
 
         .footer-right a:hover {
-            text-decoration: underline;
+            opacity: 0.7;
         }
 
-        @media (max-width: 600px) {
-            .footer-inner { flex-direction: row; font-size: 0.8rem; }
+        /* RESPONSIVE MOBILE */
+        @media (max-width: 768px) {
+            .logo { font-size: 1.8rem; }
+            .hero-sub { font-size: 1.5rem; }
+            .page-content { padding: 40px 20px; }
+            
+            .nav-links { justify-content: flex-start; gap: 12px; }
+            .nav-links a { font-size: 0.65rem; }
+
+            .footer-inner {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -223,7 +311,7 @@
 
     <header>
         <div class="header-inner">
-            <a href="#accueil" class="logo">Carl de la Chapelle</a>
+            <a href="#accueil" class="logo nav-link-logo">Carl de la Chapelle</a>
         </div>
         <div class="nav-container">
             <ul class="nav-links">
@@ -241,9 +329,11 @@
     <div id="accueil" class="page active">
         <main class="page-content">
             <section class="text-section">
-                <div class="hero-sub">Photos au naturel</div>
-                <p><i>"Commencez par faire ce qui est nécessaire, puis ce qui est possible, et tout à coup, vous faites l'impossible."</i> <br> <small>Saint François d'Assise</small></p>
-                <div class="hero-image"><img src="2025-11-01_22-37-36_880.jpeg" class="hero-img-el"></div>
+                <span class="hero-sub">Photos au naturel (Non retouchées)</span>
+                <p><i>"Commencez par faire ce qui est nécessaire, puis ce qui est possible, et tout à coup, vous faites l'impossible."</i> <br> <small>— Saint François d'Assise</small></p>
+                <div class="hero-image">
+                    <img src="2025-11-01_22-37-36_880.jpeg" alt="Image Accueil" class="hero-img-el">
+                </div>
             </section>
         </main>
     </div>
@@ -251,11 +341,15 @@
     <div id="apropos" class="page">
         <main class="page-content">
             <section class="text-section">
-                <div class="hero-sub">Qui suis-je ?</div>
-                <p>Je m’appelle Carl de La Chapelle, j’ai 20 ans et je suis étudiant en BTS comptabilité et gestion à Bordeaux. Passionné de nature, de scoutisme et de chasse, je suis attiré par le Beau depuis mon plus jeune âge.</p>
-                <div class="hero-sub">Ma spécificité</div>
-                <p>Mon choix est de ne pas retoucher mes photos. Je recherche la photographie à l’état pur, figeant l’instant présent. Cela garantit également une livraison extrêmement rapide des clichés.</p>
-                <a href="https://instagram.com/photos.delachapelle" target="_blank" style="color:white">Instagram</a>
+                <span class="hero-sub">Qui suis-je ?</span>
+                <p>Je m’appelle Carl de La Chapelle, j’ai 20 ans et je suis étudiant en BTS comptabilité et gestion à Bordeaux. Passionné de nature, de scoutisme et de chasse, je suis, depuis très jeune, attiré par le Beau. Je me suis quelquefois retrouvé à prendre des photos avec le vieux boîtier de ma grand-mère, et j’y ai pris goût.</p>
+                <p>J'ai passé le pas en septembre 2024 en achetant mon premier boîtier. Après plus d’un an d’apprentissage et d’entraînement, je me suis lancé dans les prestations et je continue de me développer.</p>
+                
+                <span class="hero-sub" style="margin-top: 40px;">Ma spécificité</span>
+                <p>Lors de mes débuts, j’ai fait un choix important dans ce domaine assez répétitif : je voulais me démarquer. Mon choix fut de ne pas retoucher mes photos. Deux grands points m’ont encouragé dans cette voie.</p>
+                <p>Tout d’abord, la recherche d’une photographie à l’état pur, où l’idée de figer l’instant présent prend tout son sens. Ensuite, la rapidité. Je trouve que pouvoir disposer des clichés dans un délai très restreint, en suivant l’événement et, dans certains cas, trier les photos avec le photographe, est une option que je souhaitais mettre en avant.</p>
+                
+                <p style="margin-top: 30px;"><a href="https://instagram.com/photos.delachapelle" target="_blank">Rejoignez-moi sur Instagram</a></p>
             </section>
         </main>
     </div>
@@ -263,11 +357,11 @@
     <div id="tarifs" class="page">
         <main class="page-content">
             <section class="text-section">
-                <div class="hero-sub">Tarifs 2026</div>
+                <span class="hero-sub">Tarifs 2026</span>
                 <p><strong>Mariage :</strong> 1000€ / journée*</p>
                 <p><strong>Soirée :</strong> 200€ / 3h*</p>
                 <p><strong>Shooting :</strong> 60€ / 2h</p>
-                <p><small>*Hors frais de déplacement.</small></p>
+                <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.8;"><i>*Frais de transport et logement non compris.</i></p>
             </section>
         </main>
     </div>
@@ -275,16 +369,23 @@
     <div id="mariage" class="page">
         <main class="page-content">
             <section class="text-section">
-                <div class="hero-sub">Vive les mariés !</div>
-                <p>Un reportage authentique pour le plus beau jour de votre vie. Livraison rapide et clichés naturels.</p>
+                <span class="hero-sub">Vive les mariés !</span>
+                <p><i>Partout en France — 1000€ / journée</i></p>
+                <p>Le Graal, c’est le jour de votre vie. Je n’ai pas besoin de vous mettre en avant l’importance d’avoir un photographe à votre mariage. Mais mes services pourront vous être très précieux : tout d’abord car, toujours à la recherche du beau en permanence, je suis extrêmement arrangeant.</p>
+                <p>Mes photos sont très naturelles tout simplement car je ne les retouche pas. Travaillant la photographie à l’état pur sur l’instant présent, vous pourrez, en les revoyant durant toute votre vie, vous sentir à chaque fois pleinement immergé dans ces clichés.</p>
+                <p>Cette spécificité que je travaille depuis mes débuts vous permet aussi d’avoir vos photos dans les délais les plus brefs suivant votre mariage. Vous pourrez compter sur moi pour donner mon maximum afin d’avoir les meilleurs souvenirs possibles pour toute votre vie.</p>
             </section>
+            
             <section class="gallery-section">
+                <span class="hero-sub">Galerie</span>
                 <div class="click-gallery">
                     <button class="gallery-arrow prev">‹</button>
                     <button class="gallery-arrow next">›</button>
                     <div class="gallery-container">
-                        <div class="gallery-item active"><img src="d.jpeg"></div>
-                        <div class="gallery-item"><img src="e.jpeg"></div>
+                        <div class="gallery-item active"><img src="d.jpeg" alt="Mariage 1"></div>
+                        <div class="gallery-item"><img src="e.jpeg" alt="Mariage 2"></div>
+                        <div class="gallery-item"><img src="f.jpeg" alt="Mariage 3"></div>
+                        <div class="gallery-item"><img src="2025-11-22_21-50-53_130.jpeg" alt="Mariage 4"></div>
                     </div>
                 </div>
             </section>
@@ -294,8 +395,26 @@
     <div id="soiree" class="page">
         <main class="page-content">
             <section class="text-section">
-                <div class="hero-sub">Soirées</div>
-                <p>Capturez l'énergie de vos événements sans attendre des semaines pour vos photos.</p>
+                <span class="hero-sub">À fond sur le dancefloor</span>
+                <p><i>200€ / 3h</i></p>
+                <p>Un événement est souvent le fruit d’une longue préparation, l’instant présent est euphorique, mais après… Eh bien oui, vous avez fait le pas de me demander d’être présent, ainsi vous et vos invités, si vous le souhaitez, repartez avec une galerie acrobatique, haute en sourires et en couleurs.</p>
+                <p>Durant la soirée, discret et efficace, vous ne serez pas embêté par mes faufilades. Encore un point important : vous aurez les photos maximum trois jours après sur un album simple de manœuvres et diffusable à souhait.</p>
+            </section>
+
+            <section class="gallery-section">
+                <span class="hero-sub">Galerie</span>
+                <div class="click-gallery">
+                    <button class="gallery-arrow prev">‹</button>
+                    <button class="gallery-arrow next">›</button>
+                    <div class="gallery-container">
+                        <div class="gallery-item active"><img src="a.jpeg" alt="Soirée 1"></div>
+                        <div class="gallery-item"><img src="c.jpeg" alt="Soirée 2"></div>
+                        <div class="gallery-item"><img src="g.jpeg" alt="Soirée 3"></div>
+                        <div class="gallery-item"><img src="h.jpeg" alt="Soirée 4"></div>
+                        <div class="gallery-item"><img src="i.jpeg" alt="Soirée 5"></div>
+                        <div class="gallery-item"><img src="2025-12-06_21-48-21_650.jpeg" alt="Soirée 6"></div>
+                    </div>
+                </div>
             </section>
         </main>
     </div>
@@ -303,8 +422,25 @@
     <div id="shooting" class="page">
         <main class="page-content">
             <section class="text-section">
-                <div class="hero-sub">Un moment suspendu</div>
-                <p>Shooting portrait, couple ou famille en lumière naturelle.</p>
+                <span class="hero-sub">Un moment suspendu</span>
+                <p><i>60€ / 2h</i></p>
+                <p>Chaque moment avec nos proches est important, savoir prendre le temps de les immortaliser l’est tout autant. Que ce soit pour un heureux événement, un cadeau ou même une petite folie de bonheur dans votre vie, je me ferai un plaisir de graver ces instants pour toujours.</p>
+                <p>Ce moment a pour but d’être dans la joie, dans le partage. Je vous donnerai des idées si vous n’en avez pas et ferai de mon mieux pour vous guider.</p>
+                <p>Une chance de plus : nous pouvons même faire le tri de la galerie ensemble pour que vous ayez directement les photos, mais surtout celles qui vous plaisent vraiment.</p>
+            </section>
+
+            <section class="gallery-section">
+                <span class="hero-sub">Galerie</span>
+                <div class="click-gallery">
+                    <button class="gallery-arrow prev">‹</button>
+                    <button class="gallery-arrow next">›</button>
+                    <div class="gallery-container">
+                        <div class="gallery-item active"><img src="k.jpeg" alt="Couple 1"></div>
+                        <div class="gallery-item"><img src="2025-11-08_16-44-45_370 (2025-11-09T14_43_14.466).jpeg" alt="Couple 2"></div>
+                        <div class="gallery-item"><img src="2025-11-26_17-16-07_070.jpeg" alt="Couple 3"></div>
+                        <div class="gallery-item"><img src="2025-11-26_17-33-56_760.jpeg" alt="Couple 4"></div>
+                    </div>
+                </div>
             </section>
         </main>
     </div>
@@ -312,8 +448,9 @@
     <div id="contact" class="page">
         <main class="page-content">
             <section class="text-section">
-                <div class="hero-sub">Contact</div>
-                <p>Discutons de votre projet par mail : <a href="mailto:delachapellecarl@gmail.com" style="color:white">delachapellecarl@gmail.com</a></p>
+                <span class="hero-sub">Parlons de vos projets</span>
+                <p>Envoyez-moi un mail à <a href="mailto:delachapellecarl@gmail.com?subject=Première prise de contact">delachapellecarl@gmail.com</a>.</p>
+                <p>Posez toutes vos questions, fournissez autant de détails que vous voulez (le plus sera le mieux) et je ferai mon possible pour vous répondre sous 48h.</p>
             </section>
         </main>
     </div>
@@ -321,44 +458,83 @@
     <footer class="footer">
         <div class="footer-inner">
             <div class="footer-left">
-                Saison 2026 &copy; Carl de La Chapelle
+                &copy; 2026 — Carl de La Chapelle
             </div>
             <div class="footer-right">
-                <a href="mailto:delachapellecarl@gmail.com?subject=Demande d'informations">Contact</a>
+                <a href="mailto:delachapellecarl@gmail.com?subject=Prise de contact via le portfolio">Me contacter</a>
             </div>
         </div>
     </footer>
 
     <script>
-        // Navigation simple
-        document.querySelectorAll('.nav-link, .logo').forEach(link => {
+        // Gestion de la navigation entre les pages
+        const navLinks = document.querySelectorAll('.nav-link');
+        const logoLink = document.querySelector('.nav-link-logo');
+        const pages = document.querySelectorAll('.page');
+
+        function navigateTo(targetId) {
+            // Masquer toutes les pages
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Afficher la page cible
+            const targetPage = document.getElementById(targetId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+
+            // Mettre à jour les liens de navigation (style actif)
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('href') === `#${targetId}`) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Remonter en haut de la page doucement
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Clics sur le menu
+        navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
-                const targetId = link.getAttribute('href').replace('#', '');
-                document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-                document.getElementById(targetId).classList.add('active');
-                
-                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                if(link.classList.contains('nav-link')) link.classList.add('active');
-                
-                window.scrollTo(0, 0);
                 e.preventDefault();
+                const targetId = link.getAttribute('href').replace('#', '');
+                navigateTo(targetId);
             });
         });
 
-        // Galeries
+        // Clic sur le logo (retour accueil)
+        logoLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            navigateTo('accueil');
+        });
+
+        // Gestion des galeries d'images indépendantes
         document.querySelectorAll('.click-gallery').forEach(gallery => {
             const items = gallery.querySelectorAll('.gallery-item');
-            let idx = 0;
-            gallery.querySelector('.next').onclick = () => {
-                items[idx].classList.remove('active');
-                idx = (idx + 1) % items.length;
-                items[idx].classList.add('active');
-            };
-            gallery.querySelector('.prev').onclick = () => {
-                items[idx].classList.remove('active');
-                idx = (idx - 1 + items.length) % items.length;
-                items[idx].classList.add('active');
-            };
+            const nextBtn = gallery.querySelector('.next');
+            const prevBtn = gallery.querySelector('.prev');
+            let currentIndex = 0;
+
+            function showItem(index) {
+                items[currentIndex].classList.remove('active');
+                currentIndex = (index + items.length) % items.length;
+                items[currentIndex].classList.add('active');
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    showItem(currentIndex + 1);
+                });
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    showItem(currentIndex - 1);
+                });
+            }
         });
     </script>
 </body>
